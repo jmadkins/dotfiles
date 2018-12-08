@@ -33,7 +33,6 @@ My descriptions below are very basic. Please read the projects' pages if you wou
 | [Auto Pairs](https://github.com/jiangmiao/auto-pairs)       | Auto-insert closing parenthesis, brackets, etc                                                                   |
 | [CTRL-P](https://github.com/kien/ctrlp.vim)                 | Fast file searching                                                                                              |
 | [Rainbow](https://github.com/luochen1990/rainbow)           | Make different sets of parenthesis different colors ( for better understandability, obviously)                   |
-| [Elixir](https://github.com/elixir-lang/vim-elixir)         | For Elixir support, naturally                                                                                    |
 | [Jade](https://github.com/digitaltoad/vim-jade)             | Jade syntax highlighting                                                                                         |
 | [Fish](http://github.com/dag/vim-fish)                      | Fish syntax highlighting and other niceties                                                                      |
 | [Spacebars](https://github.com/Slava/vim-spacebars)         | Spacebars support                                                                                                |
