@@ -62,7 +62,7 @@ fi
 
 # Link Git files
 if type git &> /dev/null; then
-  if yes_or_ask "You should update the name and email in '.gitconfig'. Have you done this? " "Please do so and run this again"; then
+  if yes_or_ask "Update name and email in '.gitconfig'. Have you done this? " "Please do so and run this again"; then
     link_to_home .gitconfig
   fi
 
@@ -85,8 +85,8 @@ vim +PluginInstall +qall
 if [[ -e rvm ]]; then
   echo "Installing rvm..."
   \curl -sSL https://get.rvm.io | bash -s stable --ruby
-fi
 
-echo "Installing x-code tools..."
-xcode-select --instal
+  echo "Installing x-code tools..."
+  xcode-select --install
+fi
 

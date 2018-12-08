@@ -1,6 +1,8 @@
 #Load Antigen
 ANTIGEN_CACHE=false
-source ~/external/antigen.zsh
+
+# TODO: Don't hardcode this path
+source /Code/dotfiles/external/antigen.zsh
 
 #Load OMZsh
 antigen use oh-my-zsh
