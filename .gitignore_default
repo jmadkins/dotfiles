@@ -1,0 +1,35 @@
+# Vim swap files
+*.swp
+*.swo
+
+# Other text editors
+.vscode
+.idea
+
+# Emacs files
+\#*\#
+*~
+.dir-locals.el
+
+# Ruby versions (just trust me)
+.ruby-version
+
+# Stupid Finder/Explorer files
+.DS_Store
+.Trashes
+Thumbs.db
+
+# Personal notes and such
+me/
+
+# Passenger logs
+passenger.3000.log
+
+# TAGS
+TAGS
+GPATH
+GRTAGS
+GTAGS
+
+# Dotenv files
+.env
