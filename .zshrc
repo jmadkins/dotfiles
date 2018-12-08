@@ -1,8 +1,20 @@
-## Load Oh My ZSH
-if [ -e $HOME/.oh-my-zsh ]; then
-    ZSH=$HOME/.oh-my-zsh
-    ZSH_THEME="agnoster"
-    COMPLETION_WAITING_DOTS="true"
-    plugins=(git rails bundler history-substring-search zsh-syntax-highlighting)
-    source $ZSH/oh-my-zsh.sh
-fi
+#Load Antigen
+ANTIGEN_CACHE=false
+source ~/external/antigen.zsh
+
+#Load OMZsh
+antigen use oh-my-zsh
+antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+
+# OMZsh plugins
+antigen bundle osx
+antigen bundle docker
+
+# Other Plugins
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Apply Antigen config
+antigen apply
+
+# Spaceship stuff
+SPACESHIP_KUBECONTEXT_SHOW=false
