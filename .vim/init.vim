@@ -11,10 +11,6 @@ let mapleader=","
 set tabstop=2 shiftwidth=2 expandtab
 set shiftround      " Don't think anyone would disagree here
 
-""" Relative line numbers are pretty great
-set number
-set relativenumber
-
 """ Keep cursor somewhat centered in screen
 set scrolloff=5
 
@@ -34,12 +30,12 @@ set smartcase   " Used with above to only ignore case when you type lowercase
 set incsearch   " C-r C-w to complete search term
 set hlsearch    " Highlight search
 
-""" Show where the 80 character limit is
+""" Show where the 120 character limit is
 "" Enforce it with 'textwidth'
 if exists('+colorcolumn')
-  set colorcolumn=80
+  set colorcolumn=120
 endif
-set textwidth=80
+set textwidth=120
 
 """ Unix line endings
 set fileformat=unix
@@ -65,9 +61,10 @@ endif
 set foldmethod=indent                 " Fold on indent, naturally
 set foldlevelstart=20                 " Start basically all unfolded
 
-""" Awesome colors
-colo pencil
-set background=dark
+""" GUI Configs
+set termguicolors
+colorschem jellybeans
+set guifont=Hack
 
 """ Better color scheme for diffing
 hi DiffAdd      ctermfg=254 ctermbg=22
@@ -109,6 +106,16 @@ function! SetupForText()
   vnoremap <buffer> k gk
 endfunction
 
+""" Toggle between relative and non-relative line numbering
+function! ToggleNumbers()
+  if(&relativenumber == 1)
+    set nornu
+    set number
+  else
+    set rnu
+  endif
+endfunction
+
 """ Trailing whitespace
 
 " Highlight trailing whitespace
@@ -122,9 +129,6 @@ autocmd InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 " Omnicompletion based on syntax
 set omnifunc=syntaxcomplete#Complete
-
-""" Set GUI font for MacVim
-set guifont=Inconsolata-g\ for\ Powerline:h14
 
 """ Auto-insert when entering a terminal
 if has("nvim")
@@ -150,86 +154,24 @@ autocmd BufRead * '"
 """ Mappings
 
 "" All modes
-" Save with CTRL-s
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <ESC>:w<CR>
-vnoremap <C-s> <ESC>:w<CR>
+" Toggle Numbers
+noremap :tn :call ToggleNumbers()<CR>
 
 "" Normal mode
-" Quit with CTRL-c
-nnoremap <C-c> <ESC>:q<CR>
 " NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
-" Clear Serach
-nnoremap <Leader>s :noh<CR>
-" Delete extra whitespace
-nnoremap <Leader>d :%s/\s\+$//<CR>
-" Correct inside HTML tag
-nnoremap <Leader>c 0f><Right>ct<
-" Fugitive commands
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>go :Gpull<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gr :Gbrowse<CR>
-nnoremap <Leader>gm :Git checkout -b 
-nnoremap <Leader>gc :Git checkout 
-" My custom git commands
-nnoremap <silent> <Leader>gu :call PushAndSetUpstream()<CR>
-nnoremap <silent> <Leader>gf :call ForcePush()<CR>
-" Better :
-nnoremap : q:i
 " Rails commands
 nnoremap <Leader>rc :Rails console<CR>
-" Terminal
-if has("nvim")
-  nnoremap <Leader>t <ESC>:term fish<CR>
-else
-  nnoremap <Leader>t <ESC>:!fish<CR>
-endif
-" Faster make
-nnoremap <Leader>m :make<CR>
-" Switch around the comma
-nnoremap <Leader>w T(dt,<right>p<right>dt)F,P
-" Bundle
-nnoremap <Leader>b :Bundle<CR>
-" Next
-nnoremap <Leader>n :w<CR>:n<CR>
-" Vim-test mappings
-nnoremap <silent> <leader>ft :TestNearest<CR>
-nnoremap <silent> <leader>fT :TestFile<CR>
-nnoremap <silent> <leader>fa :TestSuite<CR>
-nnoremap <silent> <leader>fl :TestLast<CR>
-nnoremap <silent> <leader>fg :TestVisit<CR>
-nnoremap <Leader>a gg"+yG<c-o><c-o>
-
-"" Insert Mode
-" I was told all the cool kids did it
-inoremap jk <Esc>
-" Create HTML tags
-inoremap <Leader>h <ESC>"adiwa<<C-r>a></<C-r>a><ESC>%i
-
-"" Visual Mode
-" Copy to system clipboard easily
-vnoremap <Leader>y "+y
-
-"" Terminal mode (nvim only)
-if has("nvim")
-  " Escape terminal with jk
-  tnoremap jk <C-\><C-n>
-  tnoremap <C-w> <C-\><C-n><C-w>
-endif
 
 """ Plugin configs
-
-" Enable airline bar all the time
-set laststatus=2
 
 " NERDTree show hidden files
 let NERDTreeShowHidden=1
 " But not Vim swap files
 let NERDTreeIgnore = ['\.swp$']
+
+" Enable airline bar all the time
+set laststatus=2
 
 " Enable powerline font for airline
 let g:airline_powerline_fonts = 1
@@ -269,9 +211,6 @@ let g:rails_projections = {
 
 " Be passive on HTML and let me write my Angular, Meteor, etc
 let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
-
-" Assume Python 3
-let g:syntastic_python_python_exec = '/usr/bin/env python3'
 
 " Technically this is global, but here set for vim-gitgutter
 set updatetime=750

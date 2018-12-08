@@ -43,69 +43,6 @@ My descriptions below are very basic. Please read the projects' pages if you wou
 | [Dispatch](https://github.com/tpope/vim-dispatch)           | Run async compiler plugins                                                                                       |
 | [Pencil](https://github.com/reedes/vim-colors-pencil)       | Nice colors                                                                                                      |
 
-### Custom mappings
-These are some mappings that are included and I find rather convenient
-
-#### Global mappings (all modes)
-
-| Mapping | Description   |
-|---------|---------------|
-| `CTRL`n | Open NERDTree |
-| `CTRL`s | Save (`:w`)   |
-| `CTRL`c | Quit (`:q`)   |
-
-#### Normal Mode
-
-| Mapping | Description                                                                |
-|---------|----------------------------------------------------------------------------|
-| ,a      | Copy entire contents of current buffer into system clipboard               |
-| ,b      | Run `bundle` using vim-bundler                                             |
-| ,c      | Correct contents of an HTML tag                                            |
-| ,d      | Deletes all trailing whitespace in the current buffer (highlighted in red) |
-| ,ft     | TestNearest                                                                |
-| ,fT     | TestFile                                                                   |
-| ,fa     | TestSuite                                                                  |
-| ,fl     | TestLast                                                                   |
-| ,fg     | TestVisit                                                                  |
-| ,gs     | Use Fugitive to open the `git` status                                      |
-| ,gm     | Use Fugitive to `git checkout -b`                                          |
-| ,go     | Use Fugitive to `git pull`                                                 |
-| ,gp     | Use Fugitive to `git push`                                                 |
-| ,gb     | Use Fugitive to `git blame`                                                |
-| ,gd     | Use Fugitive to `git diff`                                                 |
-| ,gu     | Push and set upstream (`git push -u origin <current-branch>`)              |
-| ,gf     | Force push current branch (`git push -f origin <current-branch>`)          |
-| ,rc     | Use vim-rails to run `rails console`                                       |
-| ,s      | Clear search highlighting (`:noh`)                                         |
-| ,t      | Open a terminal (works best in [Neovim](https://github.com/neovim/neovim)) |
-| ,w      | Swap parameters. For example, "foo(foo, bar)" becomes "foo(bar, foo)".     |
-
-For all of the Test* commands, you can find what these nonsense words mean on the [Vim-test README](https://github.com/janko-m/vim-test#setup).
-
-**Why did you choose `f` for the prefix for the test commands?**
-
-It's on the home row, and `t` was already mapped
-
-#### Insert Mode
-
-| Mapping | Description                                                |
-|---------|------------------------------------------------------------|
-| jk      | Leave Insert mode (`ESC`)                                  |
-| ,h      | Create an HTML tag with what is currently under the cursor |
-
-#### Visual mode
-
-| Mapping | Description                        |
-|---------|------------------------------------|
-| ,y      | Copy selection to system clipboard |
-
-#### Terminal mode (Neovim Only)
-
-| Mapping | Description                          |
-|---------|--------------------------------------|
-| jk      | Exit insert mode in terminal         |
-| `CTRL`w | Exit insert mode and trigger `CTRL`w |
-
 ## LICENSE
 
 This is MIT Licensed. You can find the whole license in the `LICENSE` file.
