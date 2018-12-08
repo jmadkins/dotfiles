@@ -1,0 +1,6 @@
+# Bundle your own! (It's fresher)
+.vim/bundle
+
+# Ignore things I add to spelling
+.vim/spell
+
