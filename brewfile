@@ -1,11 +1,11 @@
 # Before running brew bundle run brew tap Homebrew/bundle
-#https://github.com/Homebrew/homebrew-bundle
+# https://github.com/Homebrew/homebrew-bundle
 
 tap "caskroom/cask"
 tap "caskroom/fonts"
 tap "homebrew/bundle"
 tap "homebrew/core"
-brew "ruby"
+# brew "ruby"
 brew "python"
 brew "ipython"
 brew "ansible"

@@ -1,5 +1,7 @@
 #1 /bin/bash
 
+pwd=$(pwd)
+
 yes_or_ask() {
   if [[ $yes == true ]]; then
     return 0
@@ -46,6 +48,18 @@ if type zsh &> /dev/null; then
   link_to_home .aliases
 fi
 
+# Homebrew on Mac
+if [[ $( uname ) == 'Darwin' ]]; then
+  echo "Installing Homebrew..."
+  if [[ ! -e /usr/local/bin/brew ]]; then
+	  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  /usr/local/bin/brew tap Homebrew/bundle
+  /usr/local/bin/brew bundle --file=$pwd/brewfile
+  link_to_home brewfile
+fi
+
 # Link Git files
 if type git &> /dev/null; then
   if yes_or_ask "You should update the name and email in '.gitconfig'. Have you done this? " "Please do so and run this again"; then
@@ -55,21 +69,24 @@ if type git &> /dev/null; then
   link_to_home .gitignore_global
 fi
 
+# Install Vundle
+echo "Installing Vundle..."
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 # Link vim files
 if type vim &> /dev/null; then
   link_to_home .vim
   link_to_home .vimrc
-  echo "Installing plugins..."
-  vim +PluginInstall +qall
 fi
 
-# Homebrew on Mac
-if [[ $( uname ) == 'Darwin' ]]; then
-  if [[ ! -e /usr/local/bin/brew ]]; then
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  fi
-  /usr/local/bin/brew tap Homebrew/bundle
-  /usr/local/bin/brew bundle --file=brewfile
-  link_to_home brewfile
+echo "Installing vim plugins..."
+vim +PluginInstall +qall
+
+if [[ -e rvm ]]; then
+  echo "Installing rvm..."
+  \curl -sSL https://get.rvm.io | bash -s stable --ruby
 fi
+
+echo "Installing x-code tools..."
+xcode-select --instal
 
