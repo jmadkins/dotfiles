@@ -20,3 +20,13 @@ antigen apply
 # Spaceship theme
 antigen theme denysdovhan/spaceship-prompt
 SPACESHIP_KUBECONTEXT_SHOW=false
+
+## Inclusions
+# Source aliases, if they exist
+if [ -f $HOME/.aliases ]; then
+    source $HOME/.aliases
+fi
+
+# Use vim as default editor
+export EDITOR="vim"
+

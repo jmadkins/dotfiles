@@ -4,8 +4,8 @@ installed () {
 }
 
 ## Random
-alias nuke="rm -Rf"
-alias ll="ls -alht"
+alias nuke="rm -Rfd"
+alias ll="ls -alhG"
 
 ## For sourcing RC files
 alias szrc=". ~/.zshrc"
