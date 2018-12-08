@@ -233,6 +233,7 @@ let NERDTreeIgnore = ['\.swp$']
 
 " Enable powerline font for airline
 let g:airline_powerline_fonts = 1
+let g:airline_section_gutter = '%= %{strftime("%R")}'
 
 " Rainbow parenthesis
 let g:rainbow_active = 1
