@@ -29,7 +29,7 @@ link_to_home() {
   fi
 }
 
-function move_if_exists() {
+move_if_exists() {
   if [ -e $HOME/$1 ]; then
     echo "Moving ~/$1 to ~/$1.old"
     mv -f $HOME/$1 $HOME/$1.old
@@ -39,13 +39,14 @@ function move_if_exists() {
 # Link ZSH files
 if type zsh &> /dev/null; then
   if [ ! -e "$HOME/.oh-my-zsh" ]; then
-    echo "Installing oh-my-zsh"
+    echo "Installing oh-my-zsh..."
     curl -L "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh" | sh
   fi
 
   link_to_home .zshrc
   link_to_home .zshenv
   link_to_home .aliases
+  move_if_exists antigen.zsh # I'd like to just create a symlink but zsh complains of too many symbolic links :(
 fi
 
 # Homebrew on Mac
