@@ -24,8 +24,11 @@ Plugin 'sheerun/vim-polyglot'             " Laguage-Specific improvments (syntax
 Plugin 'scrooloose/nerdtree'              " Nerdtree
 Plugin 'scrooloose/syntastic'             " Syntastic
 Plugin 'tpope/vim-bundler'                " Bundler
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-dotenv'
 Plugin 'tpope/vim-endwise'                " Endwise
 Plugin 'tpope/vim-rails'                  " Rails
+Plugin 'vim-ruby/vim-ruby'                " Ruby
 Plugin 'tpope/vim-commentary'             " Easy commenting
 Plugin 'kien/ctrlp.vim'                   " Quick file finding
 Plugin 'mileszs/ack.vim'                  " Silver searcher in Vim
