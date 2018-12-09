@@ -8,8 +8,22 @@ source /Code/dotfiles/external/antigen.zsh
 antigen use oh-my-zsh
 
 # OMZsh plugins
-antigen bundle osx
 antigen bundle docker
+
+# OS specific plugins
+if [[ $CURRENT_OS == 'OS X' ]]; then
+  antigen bundle brew
+  antigen bundle brew-cask
+  antigen bundle gem
+  antigen bundle osx
+elif [[ $CURRENT_OS == 'Linux' ]]; then
+  # None so far...
+  if [[ $DISTRO == 'CentOS' ]]; then
+    antigen bundle centos
+  fi
+elif [[ $CURRENT_OS == 'Cygwin' ]]; then
+  antigen bundle cygwin
+fi
 
 # Other Plugins
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -24,7 +38,7 @@ SPACESHIP_KUBECONTEXT_SHOW=false
 ## Inclusions
 # Source aliases, if they exist
 if [ -f $HOME/.aliases ]; then
-    source $HOME/.aliases
+  source $HOME/.aliases
 fi
 
 # Use vim as default editor
