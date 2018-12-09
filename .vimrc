@@ -14,9 +14,7 @@ set tabstop=2 shiftwidth=2 expandtab
 set shiftround      " Round to the nearest tab increment when indenting
 
 """ Keep cursor somewhat centered in screen
-" set scrolloff=5
-set cursorline
-hi CursorLine term=bold cterm=bold
+set scrolloff=5
 
 """ Better invisibles, should you want them
 set listchars=eol:$,tab:»»
