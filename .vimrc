@@ -4,6 +4,8 @@ runtime! vundle.vim
 """ Set leader to ,
 let mapleader=","
 
+set number
+
 """ FileType tabbing settings
 " Default tabbing
 " Some languages have custom tabbing, specified in their ftplugin/<name>.vim
@@ -12,7 +14,9 @@ set tabstop=2 shiftwidth=2 expandtab
 set shiftround      " Round to the nearest tab increment when indenting
 
 """ Keep cursor somewhat centered in screen
-set scrolloff=5
+" set scrolloff=5
+set cursorline
+hi CursorLine term=bold cterm=bold
 
 """ Better invisibles, should you want them
 set listchars=eol:$,tab:»»
@@ -35,6 +39,12 @@ if exists('+colorcolumn')
   set colorcolumn=120
 endif
 
+""" Fix Delay on Esc
+set timeoutlen=1000 ttimeoutlen=10
+
+""" backspace should behave like backspace
+:set backspace=indent,eol,start
+
 """ Enforce it with 'textwidth'
 set textwidth=120
 
@@ -50,9 +60,6 @@ syntax on
 """ Enable the filetype plugin and indenting
 filetype plugin indent on
 
-""" auto-reload file when it has changed
-" set autoreload
-
 """ Set vim to use 256 colors (Tmux/Vim Airline fix)
 " set t_Co=256
 set termguicolors
@@ -62,9 +69,8 @@ if executable('/bin/zsh')
   set shell=/bin/zsh
 endif
 
-""" Folding
-set foldmethod=syntax                 " Fold on indent, naturally
-set foldlevelstart=999                " Start basically all unfolded
+""" Disable folding
+set nofoldenable
 
 " UI Colors
 set termguicolors
@@ -159,7 +165,8 @@ autocmd BufRead * '"
 
 "" All modes
 " Toggle numbering
-noremap :tn :call ToggleNumbers()<CR>
+nnoremap :tn :call ToggleNumbers()<CR>
+
 " Save with CTRL-s
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
@@ -216,6 +223,9 @@ let g:rails_projections = {
 
 " Be passive on HTML and let me write my Angular, Meteor, etc
 let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
+
+" Ignore some things with ctrlp search
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " Technically this is global, but here set for vim-gitgutter
 set updatetime=750
