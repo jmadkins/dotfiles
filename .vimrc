@@ -225,3 +225,7 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " Set Vim-Test to use Dispatch (important!)
 let test#strategy = "dispatch"
+
+" Automatically show NERDTree when launched with just `vim`, similar to launching with `vim .`
+autocmd StdinReadPre * let s:std_in=120
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
