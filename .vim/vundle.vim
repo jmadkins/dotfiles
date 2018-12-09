@@ -25,6 +25,7 @@ Plugin 'scrooloose/nerdtree'              " Nerdtree
 Plugin 'scrooloose/syntastic'             " Syntastic
 Plugin 'tpope/vim-bundler'                " Bundler
 Plugin 'tpope/vim-haml'
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'tpope/vim-dotenv'
 Plugin 'tpope/vim-endwise'                " Endwise
 Plugin 'tpope/vim-rails'                  " Rails
