@@ -31,15 +31,18 @@ Plugin 'tpope/vim-endwise'                " Endwise
 Plugin 'tpope/vim-rails'                  " Rails
 Plugin 'vim-ruby/vim-ruby'                " Ruby
 Plugin 'tpope/vim-commentary'             " Easy commenting
-Plugin 'kien/ctrlp.vim'                   " Quick file finding
+"Plugin 'kien/ctrlp.vim'                   " Quick file finding
 Plugin 'mileszs/ack.vim'                  " Silver searcher in Vim
 Plugin 'rizzatti/dash.vim'                " Launch Dash from Vim
 Plugin 'janko-m/vim-test'                 " Support for various testing frameworks
 Plugin 'ervandew/supertab'                " Better tab-completion
 Plugin 'tpope/vim-dispatch'               " Run tests async
+Plugin 'vimwiki/vimwiki'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'stephpy/vim-yaml'
 
 " Color schemes
-" Plugin 'romainl/Apprentice'             " https://github.com/romainl/Apprentice
 Plugin 'nanotech/jellybeans.vim'
 
 " End Vundle

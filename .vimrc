@@ -58,10 +58,6 @@ syntax on
 """ Enable the filetype plugin and indenting
 filetype plugin indent on
 
-""" Set vim to use 256 colors (Tmux/Vim Airline fix)
-" set t_Co=256
-set termguicolors
-
 """ Zsh for better compatibility
 if executable('/bin/zsh')
   set shell=/bin/zsh
@@ -163,7 +159,10 @@ autocmd BufRead * '"
 
 "" All modes
 " Toggle numbering
-nnoremap :tn :call ToggleNumbers()<CR>
+nnoremap <Leader>tn :call ToggleNumbers()<CR>
+
+" Search in files
+nnoremap <Leader>' :Rg<CR>
 
 " Save with CTRL-s
 nnoremap <C-s> :w<CR>
@@ -172,7 +171,7 @@ vnoremap <C-s> <ESC>:w<CR>
 
 "" Normal mode
 " NERDTree
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <Leader>; :NERDTreeToggle<CR>
 
 """ Plugin configs
 
@@ -221,10 +220,6 @@ let g:rails_projections = {
 
 " Be passive on HTML and let me write my Angular, Meteor, etc
 let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
-
-" Ignore some things with ctrlp search
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_working_path_mode = 'ra' " https://github.com/kien/ctrlp.vim#basic-options
 
 " Technically this is global, but here set for vim-gitgutter
 set updatetime=750
