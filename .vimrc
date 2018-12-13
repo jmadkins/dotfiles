@@ -221,6 +221,13 @@ let g:rails_projections = {
 " Be passive on HTML and let me write my Angular, Meteor, etc
 let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
+" Remap CtrlP search -- <Leader>, doesn't work
+let g:ctrlp_map = ',p'
+
+" Ignore some things with ctrlp search
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_working_path_mode = 'ra' " https://github.com/kien/ctrlp.vim#basic-options
+
 " Technically this is global, but here set for vim-gitgutter
 set updatetime=750
 

@@ -24,26 +24,26 @@ Plugin 'sheerun/vim-polyglot'             " Laguage-Specific improvments (syntax
 Plugin 'scrooloose/nerdtree'              " Nerdtree
 Plugin 'scrooloose/syntastic'             " Syntastic
 Plugin 'tpope/vim-bundler'                " Bundler
-Plugin 'tpope/vim-haml'
-Plugin 'martinda/Jenkinsfile-vim-syntax'
-Plugin 'tpope/vim-dotenv'
+Plugin 'tpope/vim-haml'                   " HAML
+Plugin 'martinda/Jenkinsfile-vim-syntax'  " Jenkinsfile
+Plugin 'tpope/vim-dotenv'                 " Dotenv
 Plugin 'tpope/vim-endwise'                " Endwise
 Plugin 'tpope/vim-rails'                  " Rails
 Plugin 'vim-ruby/vim-ruby'                " Ruby
 Plugin 'tpope/vim-commentary'             " Easy commenting
-"Plugin 'kien/ctrlp.vim'                   " Quick file finding
+Plugin 'kien/ctrlp.vim'                   " Quick file finding
 Plugin 'mileszs/ack.vim'                  " Silver searcher in Vim
 Plugin 'rizzatti/dash.vim'                " Launch Dash from Vim
 Plugin 'janko-m/vim-test'                 " Support for various testing frameworks
 Plugin 'ervandew/supertab'                " Better tab-completion
 Plugin 'tpope/vim-dispatch'               " Run tests async
-Plugin 'vimwiki/vimwiki'
-Plugin 'junegunn/fzf'
+Plugin 'vimwiki/vimwiki'                  " Markdown Wiki
+Plugin 'junegunn/fzf'                     " Fuzzy finder
 Plugin 'junegunn/fzf.vim'
-Plugin 'stephpy/vim-yaml'
+Plugin 'stephpy/vim-yaml'                 " Yaml
 
 " Color schemes
-Plugin 'nanotech/jellybeans.vim'
+Plugin 'nanotech/jellybeans.vim'         " Darker theme
 
 " End Vundle
 call vundle#end()
