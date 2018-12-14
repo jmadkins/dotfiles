@@ -29,6 +29,11 @@ link_to_home() {
   fi
 }
 
+copy_to_home() {
+  move_if_exists $1
+  cp "$(pwd)/$1" "$HOME/$1"
+}
+
 move_if_exists() {
   if [ -e $HOME/$1 ]; then
     echo "Moving ~/$1 to ~/$1.old"
@@ -46,7 +51,7 @@ if type zsh &> /dev/null; then
   link_to_home .zshrc
   link_to_home .zshenv
   link_to_home .aliases
-  move_if_exists antigen.zsh # I'd like to just create a symlink but zsh complains of too many symbolic links :(
+  copy_to_home antigen.zsh # I'd like to just create a symlink but zsh complains of too many symbolic links :(
 fi
 
 # Homebrew on Mac
@@ -64,7 +69,11 @@ fi
 # Link Git files
 if type git &> /dev/null; then
   if yes_or_ask "Update name and email in '.gitconfig'. Have you done this? " "Please do so and run this again"; then
-    link_to_home .gitconfig
+    if [ $(hostname | cut -c 1,2,3) = "CMM" ]; then
+      link_to_home .gitconfig_cmm
+    else
+      link_to_home .gitconfig
+    fi
   fi
 
   link_to_home .gitignore_global

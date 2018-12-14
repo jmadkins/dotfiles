@@ -1,0 +1,23 @@
+[core]
+	excludesfile = ~/.gitignore_global
+[user]
+	name = Justin Adkins
+	email = jadkins@covermymeds.com
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[alias]
+	co = checkout
+	br = branch
+	mkbr = checkout -b
+	rmbr = branch -d
+	mvbr = branch -m
+	com = commit -m
+	st = status -s
+[color]
+	ui = auto
+[github]
+	user = jmadkins
