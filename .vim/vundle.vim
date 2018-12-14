@@ -41,6 +41,8 @@ Plugin 'vimwiki/vimwiki'                  " Markdown Wiki
 Plugin 'junegunn/fzf'                     " Fuzzy finder
 Plugin 'junegunn/fzf.vim'
 Plugin 'stephpy/vim-yaml'                 " Yaml
+Plugin 'easymotion/vim-easymotion'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Color schemes
 Plugin 'nanotech/jellybeans.vim'         " Darker theme
