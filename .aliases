@@ -71,3 +71,11 @@ fi
 if type tmuxinator &> /dev/null; then
   alias mux=tmuxinator
 fi
+
+# Docker
+alias dcu="docker-compose up"
+alias dcd="docker-compose down"
+
+# Git
+alias gc="git commit"
+alias gpom="git pull origin master"

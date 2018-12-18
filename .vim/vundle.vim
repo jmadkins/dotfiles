@@ -43,6 +43,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'stephpy/vim-yaml'                 " Yaml
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'thoughtbot/vim-rspec'
 
 " Color schemes
 Plugin 'nanotech/jellybeans.vim'         " Darker theme

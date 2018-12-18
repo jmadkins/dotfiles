@@ -167,21 +167,20 @@ autocmd BufRead * '"
 
 """ Mappings
 
-"" All modes
-" Toggle numbering
+" Toggle line number relative/actual
 nnoremap <Leader>tn :call ToggleNumbers()<CR>
-
-" Search in files
-nnoremap <Leader>' :Rg<CR>
-
+" Rspec.vim
+map <Leader>sc :call RunCurrentSpecFile()<CR>
+map <Leader>sa :call RunAllSpecs()<CR>
+" NERDTree
+map <Leader>; :NERDTreeToggle<CR>
+" Search the contents of files
+map <Leader>' :Rg<CR>
 " Save with CTRL-s
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 
-"" Normal mode
-" NERDTree
-nnoremap <Leader>; :NERDTreeToggle<CR>
 
 """ Plugin configs
 
