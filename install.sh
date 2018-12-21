@@ -68,26 +68,24 @@ fi
 
 # Link Git files
 if type git &> /dev/null; then
-  if yes_or_ask "Update name and email in '.gitconfig'. Have you done this? " "Please do so and run this again"; then
-    if [ $(hostname | cut -c 1,2,3) = "CMM" ]; then
-      link_to_home .gitconfig_cmm
-    else
-      link_to_home .gitconfig
-    fi
+  if [ $(hostname | cut -c 1,2,3) = "CMM" ]; then
+    ln -sf "$(pwd)/.gitconfig_cmm" "$HOME/.gitconfig"
+  else
+    link_to_home .gitconfig
   fi
 
   link_to_home .gitignore_global
 fi
 
 # Install Vundle
-echo "Installing Vundle..."
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 # Link vim files
 if type vim &> /dev/null; then
   link_to_home .vim
   link_to_home .vimrc
 fi
+
+echo "Installing Vundle..."
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo "Installing vim plugins..."
 vim +PluginInstall +qall
