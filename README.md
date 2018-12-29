@@ -1,6 +1,6 @@
 # My Dotfiles
 
-Various configuration files used to setup my development environment.
+Various configuration files used to setup my development environment. If you like something, feel free to use it!
 
 A [powerline font](https://github.com/powerline/fonts) is required, I recommend Hack.
 
