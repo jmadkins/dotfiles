@@ -176,11 +176,16 @@ map <Leader>sa :call RunAllSpecs()<CR>
 map <Leader>; :NERDTreeToggle<CR>
 " Search the contents of files
 map <Leader>' :Rg<CR>
+" Move buffers shortcut
+map <Leader>m <C-w>w<CR>
+
+" Easier shortcut for quiting
+map :qq :q!<CR>
+
 " Save with CTRL-s
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> <ESC>:w<CR>
-
 
 """ Plugin configs
 
@@ -189,8 +194,8 @@ set laststatus=2
 
 " NERDTree show hidden files
 let NERDTreeShowHidden=1
-" But not Vim swap files
-let NERDTreeIgnore = ['\.swp$']
+" But not these things...
+let NERDTreeIgnore = ['\.swp$', '^.git$[[dir]]']
 
 " Enable powerline font for airline
 let g:airline_powerline_fonts = 1
