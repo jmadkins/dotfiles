@@ -77,13 +77,13 @@ if type git &> /dev/null; then
   link_to_home .gitignore_global
 fi
 
-# Install Vundle
 # Link vim files
 if type vim &> /dev/null; then
   link_to_home .vim
   link_to_home .vimrc
 fi
 
+# Install Vundle
 echo "Installing Vundle..."
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
