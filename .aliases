@@ -78,4 +78,9 @@ alias dcd="docker-compose down"
 
 # Git
 alias gc="git commit"
+alias gco='git checkout'
 alias gpom="git pull origin master"
+alias gs="git status -sb"
+
+# Remove `+` and `-` from start of diff lines; just rely upon color.
+alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
