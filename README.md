@@ -1,17 +1,12 @@
-# My Dotfiles
+# Justin Adkins Dot Files
 
-Various configuration files used to setup my development environment. If you like something, feel free to use it!
+These are config files to setup a system the way I like it. If you like something, feel free to use it!
 
-A [powerline font](https://github.com/powerline/fonts) is required, I recommend Hack.
+I am running macOS, but it will likely work on Linux as well. A [powerline font](https://github.com/powerline/fonts) is required, I recommend Hack.
 
-Currently, I'm configuring the following items with my dotfiles
+## Installation
 
-* Git
-* Shell
-* Vim
-* Homebrew
-
-## Getting Started
+Running the following command after cloning the repo
 
 ```shell
 ./install.sh
