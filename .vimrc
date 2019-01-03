@@ -1,69 +1,72 @@
-""" Load Vundle plugins
+" Load Vundle plugins
 runtime! vundle.vim
 
-""" Set leader to ,
+" Set leader to ,
 let mapleader=","
 
 set number
 
-""" FileType tabbing settings
+" FileType tabbing settings
 " Default tabbing
 " Some languages have custom tabbing, specified in their ftplugin/<name>.vim
 " files
 set tabstop=2 shiftwidth=2 expandtab
 set shiftround      " Round to the nearest tab increment when indenting
 
-""" Keep cursor somewhat centered in screen
+" Keep cursor somewhat centered in screen
 set scrolloff=5
 
-""" Better invisibles, should you want them
+" Better invisibles, should you want them
 set listchars=eol:$,tab:»»
 
-""" Highlight colors for listchars and other unknowns/invisibles
+" Highlight colors for listchars and other unknowns/invisibles
 hi NonText ctermfg=8
 hi SpecialKey ctermfg=8
 
-""" Who needs vi compatibility anyways?
+" Who needs vi compatibility anyways?
 set nocompatible
 
-""" Better searching
+" Better searching
 set ignorecase  " Ignore case of searches
 set smartcase   " Used with above to only ignore case when you type lowercase
 set incsearch   " C-r C-w to complete search term
 set hlsearch    " Highlight search
 
-""" Show where the 120 character limit is
+" =======
+" Text Formatting
+" =======
+
+" 100 character line length
 if exists('+colorcolumn')
-  set colorcolumn=120
+  set colorcolumn=100
 endif
 
-""" Fix Delay on Esc
+set textwidth=100
+
+" Fix Delay on Esc
 set timeoutlen=1000 ttimeoutlen=10
 
-""" backspace should behave like backspace
+" backspace should behave like backspace
 :set backspace=indent,eol,start
 
-""" Enforce it with 'textwidth'
-set textwidth=120
-
-""" Unix line endings
+" Unix line endings
 set fileformat=unix
 
-""" No line wrapping
+" No line wrapping
 set nowrap
 
-""" Syntax Highlighting
+" Syntax Highlighting
 syntax on
 
-""" Enable the filetype plugin and indenting
+" Enable the filetype plugin and indenting
 filetype plugin indent on
 
-""" Zsh for better compatibility
+" Zsh for better compatibility
 if executable('/bin/zsh')
   set shell=/bin/zsh
 endif
 
-""" Disable folding
+" Disable folding
 set nofoldenable
 
 " UI Colors
