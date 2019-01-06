@@ -14,7 +14,7 @@ set tabstop=2 shiftwidth=2 expandtab
 set shiftround      " Round to the nearest tab increment when indenting
 
 " Keep cursor somewhat centered in screen
-set scrolloff=5
+set scrolloff=10
 
 " Better invisibles, should you want them
 set listchars=eol:$,tab:»»
@@ -168,27 +168,44 @@ autocmd BufNewFile *.tex 0r ~/.vim/templates/template.tex
 """ Jump to last place in file on open
 autocmd BufRead * '"
 
-""" Mappings
+""" MAPPINGS
 
 " Toggle line number relative/actual
 nnoremap <Leader>tn :call ToggleNumbers()<CR>
+
 " Rspec.vim
 map <Leader>sc :call RunCurrentSpecFile()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
+
 " NERDTree
 map <Leader>; :NERDTreeToggle<CR>
+
 " Search the contents of files
-map <Leader>' :Rg<CR>
+map <F7> :Rg<CR>
+
 " Move buffers shortcut
-map <Leader>m <C-w>w<CR>
+map <Leader>m <C-w>w
 
-" Easier shortcut for quiting
-map :qq :q!<CR>
+" Copy into macOS keyboard
+vnoremap <Leader>y "*y
 
-" Save with CTRL-s
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <ESC>:w<CR>
-vnoremap <C-s> <ESC>:w<CR>
+" Move cursor to first non-blank char
+nnoremap <Leader>h ^
+vnoremap <Leader>h ^
+
+" Move cursor to last char
+nnoremap <Leader>l $
+vnoremap <Leader>l $
+
+" ABORT EXIT with F4
+nnoremap <F4> :q!<CR>
+inoremap <F4> <ESC>:q!<CR>
+vnoremap <F4> <ESC>:q!<CR>
+
+" Save with F2
+nnoremap <F2> :w<CR>
+inoremap <F2> <ESC>:w<CR>
+vnoremap <F2> <ESC>:w<CR>
 
 """ Plugin configs
 
