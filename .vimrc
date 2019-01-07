@@ -215,7 +215,7 @@ set laststatus=2
 " NERDTree show hidden files
 let NERDTreeShowHidden=1
 " But not these things...
-let NERDTreeIgnore = ['\.swp$', '^.git$[[dir]]']
+let NERDTreeIgnore = ['\.swp$', '\.DS_Store$']
 let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " Enable powerline font for airline
