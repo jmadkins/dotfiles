@@ -216,6 +216,7 @@ set laststatus=2
 let NERDTreeShowHidden=1
 " But not these things...
 let NERDTreeIgnore = ['\.swp$', '^.git$[[dir]]']
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " Enable powerline font for airline
 let g:airline_powerline_fonts = 1
