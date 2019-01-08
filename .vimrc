@@ -25,19 +25,18 @@ map <Leader>sc :call RunCurrentSpecFile()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
 
 " NERDTree
-map <Leader>; :NERDTreeToggle<CR>
+map <F5> :NERDTreeToggle<CR>
+
+" Move buffers shortcut
+map <F6> <C-w>w
 
 " Search the contents of files
 map <F7> :Rg<CR>
-
-" Move buffers shortcut
-map <Leader>m <C-w>w
 
 " Copy into macOS keyboard
 vnoremap <Leader>y "*y
 
 " Move cursor to first non-blank char
-noremap <Leader>h ^
 nnoremap <Leader>h ^
 vnoremap <Leader>h ^
 
@@ -45,15 +44,20 @@ vnoremap <Leader>h ^
 nnoremap <Leader>l $
 vnoremap <Leader>l $
 
-" ABORT EXIT with F4
-nnoremap <F4> :q!<CR>
-inoremap <F4> <ESC>:q!<CR>
-vnoremap <F4> <ESC>:q!<CR>
-
-" Save with F2
+" F2 => Save
 nnoremap <F2> :w<CR>
 inoremap <F2> <ESC>:w<CR>
 vnoremap <F2> <ESC>:w<CR>
+
+" F3 => Save and Exit
+nnoremap <F3> :wq<CR>
+inoremap <F3> <ESC>:wq<CR>
+vnoremap <F3> <ESC>:wq<CR>
+
+" F4 => Exit
+nnoremap <F4> :q!<CR>
+inoremap <F4> <ESC>:q!<CR>
+vnoremap <F4> <ESC>:q!<CR>
 
 " =======
 " Text Formatting
