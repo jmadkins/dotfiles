@@ -33,6 +33,9 @@ map <F6> <C-w>w
 " Search the contents of files
 map <F7> :Rg<CR>
 
+" Search by file name with CtrlP plugin
+let g:ctrlp_map = '<F8>'
+
 " Copy into macOS keyboard
 vnoremap <Leader>y "*y
 
@@ -54,10 +57,10 @@ nnoremap <F3> :wq<CR>
 inoremap <F3> <ESC>:wq<CR>
 vnoremap <F3> <ESC>:wq<CR>
 
-" F4 => Exit
-nnoremap <F4> :q!<CR>
-inoremap <F4> <ESC>:q!<CR>
-vnoremap <F4> <ESC>:q!<CR>
+" F12 => Exit
+nnoremap <F12> :q!<CR>
+inoremap <F12> <ESC>:q!<CR>
+vnoremap <F12> <ESC>:q!<CR>
 
 " =======
 " Text Formatting
@@ -228,19 +231,31 @@ endfunction
 " PLUGIN CONFIGS
 " =======
 
+""" Airline
 " Enable airline bar all the time
 set laststatus=2
-
-" NERDTree show hidden files
-let NERDTreeShowHidden=1
-" But not these things...
-let NERDTreeIgnore = ['\.swp$', '\.DS_Store$']
-let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " Enable powerline font for airline
 let g:airline_powerline_fonts = 1
 
-" Rainbow parenthesis
+""" NerdTree
+" Sshow hidden files
+let NERDTreeShowHidden=1
+
+" Ingore certain things
+let NERDTreeIgnore = ['\.swp$', '\.DS_Store$']
+
+" Fix display issue on macOS
+let g:NERDTreeNodeDelimiter = "\u00a0"
+
+" Technically this is global, but here set for vim-gitgutter
+set updatetime=750
+
+" Set better super tab completion
+let g:SuperTabDefaultCompletionType = "context"
+
+""" Rainbow
+" Parenthesis
 let g:rainbow_active = 1
 
 let g:rainbow_conf = {
@@ -264,6 +279,7 @@ let g:rainbow_conf = {
       \   }
       \}
 
+""" Rails
 " Custom Vim Rails additions
 let g:rails_projections = {
       \ "app/workers/*.rb":     {"command": "worker"},
@@ -275,18 +291,15 @@ let g:rails_projections = {
 " Be passive on HTML and let me write my Angular, Meteor, etc
 let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
-" Remap CtrlP search -- <Leader>, doesn't work
-let g:ctrlp_map = ',p'
+""" CtrlP Search
+" https://github.com/kien/ctrlp.vim#basic-options
 
-" Ignore some things with ctrlp search
+" Ignore items from search
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_working_path_mode = 'ra' " https://github.com/kien/ctrlp.vim#basic-options
 
-" Technically this is global, but here set for vim-gitgutter
-set updatetime=750
+" Default search mode
+let g:ctrlp_working_path_mode = 'ra'
 
-" Set better super tab completion
-let g:SuperTabDefaultCompletionType = "context"
-
-" Set Vim-Test to use Dispatch (important!)
+""" Vim-Test
+" Use Dispatch (important!)
 let test#strategy = "dispatch"
