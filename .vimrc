@@ -10,6 +10,7 @@ set number
 
 " UI Colors
 set termguicolors
+syntax enable
 colorscheme jellybeans
 set guifont=Hack
 
@@ -61,6 +62,12 @@ vnoremap <F3> <ESC>:wq<CR>
 nnoremap <F12> :q!<CR>
 inoremap <F12> <ESC>:q!<CR>
 vnoremap <F12> <ESC>:q!<CR>
+
+"Switch between different windows by their direction
+no <C-j> <C-w>j
+no <C-k> <C-w>k
+no <C-l> <C-w>l
+no <C-h> <C-w>h
 
 " =======
 " Text Formatting
@@ -176,10 +183,6 @@ autocmd BufNewFile *.tex 0r ~/.vim/templates/template.tex
 " Jump to last place in file on open
 autocmd BufRead * '"
 
-" Automatically show NERDTree when launched with just `vim`, similar to launching with `vim .`
-autocmd StdinReadPre * let s:std_in=120
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 " =======
 " FUNCTIONS
 " =======
@@ -238,6 +241,9 @@ set laststatus=2
 " Enable powerline font for airline
 let g:airline_powerline_fonts = 1
 
+" Tender theme with Airline
+" let g:airline_theme = 'jellybeans'
+
 """ NerdTree
 " Sshow hidden files
 let NERDTreeShowHidden=1
@@ -247,6 +253,10 @@ let NERDTreeIgnore = ['\.swp$', '\.DS_Store$']
 
 " Fix display issue on macOS
 let g:NERDTreeNodeDelimiter = "\u00a0"
+
+" Automatically show NERDTree when launched with just `vim`, similar to launching with `vim .`
+autocmd StdinReadPre * let s:std_in=120
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Technically this is global, but here set for vim-gitgutter
 set updatetime=750
