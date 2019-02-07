@@ -6,6 +6,7 @@ installed () {
 ## Random
 alias nuke="rm -Rfd"
 alias ll="ls -alhG"
+alias lo="logout"
 
 ## For sourcing RC files
 alias szrc=". ~/.zshrc"
@@ -73,7 +74,7 @@ if type tmuxinator &> /dev/null; then
 fi
 
 # Docker
-alias dcu="docker-compose up"
+alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}\t{{.Command}}\t{{.Image}}"'
 alias dex='docker exec -e COLUMNS="$(tput cols)" -e LINES="$(tput lines)" -ti'
