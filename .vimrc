@@ -11,8 +11,11 @@ set number
 " UI Colors
 set termguicolors
 syntax enable
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme neodark
 set guifont=Hack
+
+let g:neodark#background = '#212121'
 
 " =======
 " MAPPINGS

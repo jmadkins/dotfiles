@@ -47,6 +47,7 @@ Plugin 'thoughtbot/vim-rspec'
 
 " Color schemes
 Plugin 'nanotech/jellybeans.vim'         " Darker theme
+Plugin 'KeitaNakamura/neodark.vim'
 
 " End Vundle
 call vundle#end()
