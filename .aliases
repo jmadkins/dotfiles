@@ -76,7 +76,7 @@ fi
 # Docker
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
-alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}\t{{.Command}}\t{{.Image}}"'
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dex='docker exec -e COLUMNS="$(tput cols)" -e LINES="$(tput lines)" -ti'
 
 # Git
