@@ -48,16 +48,16 @@ map <Leader>sc :call RunCurrentSpecFile()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
 
 " NERDTree
-map <F5> :NERDTreeToggle<CR>
+map <Leader>; :NERDTreeToggle<CR>
 
 " Move buffers shortcut
-map <F6> <C-w>w
+map <Leader>m <C-w>w
 
 " Search the contents of files
-map <F7> :Rg<CR>
+map <Leader>o :Rg<CR>
 
 " Search by file name with CtrlP plugin
-let g:ctrlp_map = '<F8>'
+let g:ctrlp_map = ',p'
 
 " Copy into macOS keyboard
 vnoremap <Leader>y "*y
@@ -69,21 +69,6 @@ vnoremap <Leader>h ^
 " Move cursor to last char
 nnoremap <Leader>l $
 vnoremap <Leader>l $
-
-" F2 => Save
-nnoremap <F2> :w<CR>
-inoremap <F2> <ESC>:w<CR>
-vnoremap <F2> <ESC>:w<CR>
-
-" F3 => Save and Exit
-nnoremap <F3> :wq<CR>
-inoremap <F3> <ESC>:wq<CR>
-vnoremap <F3> <ESC>:wq<CR>
-
-" F12 => Exit
-nnoremap <F12> :q!<CR>
-inoremap <F12> <ESC>:q!<CR>
-vnoremap <F12> <ESC>:q!<CR>
 
 "Switch between different windows by their direction
 no <C-j> <C-w>j
