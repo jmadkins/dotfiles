@@ -44,6 +44,7 @@ Plugin 'stephpy/vim-yaml'                 " Yaml
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'bpolly/vim-ttr'
 
 " Color schemes
 Plugin 'nanotech/jellybeans.vim'         " Darker theme
