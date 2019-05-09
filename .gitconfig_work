@@ -21,3 +21,5 @@
 	ui = auto
 [github]
 	user = jmadkins
+[hub]
+	host = git.innova-partners.com

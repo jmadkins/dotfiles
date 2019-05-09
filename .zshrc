@@ -26,6 +26,15 @@ elif [[ $CURRENT_OS == 'Cygwin' ]]; then
   antigen bundle cygwin
 fi
 
+# GitHub Hub
+if [[ -a $(which hub) ]]
+then
+    eval $( hub alias -s)
+    alias gpr="hub pull-request"
+    alias gpl="hub sync"
+    alias gci="hub ci-status"
+fi
+
 # Other Plugins
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
