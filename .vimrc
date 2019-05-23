@@ -61,6 +61,7 @@ let g:ctrlp_map = ',p'
 
 " Copy into macOS keyboard
 vnoremap <Leader>y "*y
+vnoremap <Leader>v "*p
 
 " Move cursor to first non-blank char
 nnoremap <Leader>h ^

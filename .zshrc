@@ -54,6 +54,7 @@ fi
 
 # Use vim as default editor
 export EDITOR="vim"
+export PATH="/usr/local/opt/curl/bin:$PATH"
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
