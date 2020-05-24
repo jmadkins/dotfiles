@@ -45,6 +45,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'bpolly/vim-ttr'
+Plugin 'godlygeek/tabular'
 
 " Color schemes
 Plugin 'nanotech/jellybeans.vim'         " Darker theme

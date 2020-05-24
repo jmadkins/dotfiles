@@ -21,3 +21,5 @@
 	ui = auto
 [github]
 	user = jmadkins
+[pull]
+	rebase = true

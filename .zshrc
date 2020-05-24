@@ -4,6 +4,11 @@
 ANTIGEN_CACHE=false
 
 source "$HOME/antigen.zsh"
+source <(kubectl completion zsh)
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+source ~/.rvm/scripts/rvm
 
 #Load OMZsh
 antigen use oh-my-zsh
