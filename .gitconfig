@@ -6,11 +6,6 @@
 	signingkey = FB534FC5E2561F34ADFACE9F3239E372D8C06481
 [push]
 	default = simple
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
-	process = git-lfs filter-process
 [alias]
 	co = checkout
 	br = branch
@@ -26,6 +21,11 @@
 [pull]
   rebase = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /opt/homebrew/bin/gpg
 [commit]
 	gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

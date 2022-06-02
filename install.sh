@@ -68,13 +68,8 @@ fi
 
 # Link Git files
 if type git &> /dev/null; then
-  if [ $(hostname | cut -c 1,2,3) = "CMM" ]; then
-    ln -sf "$(pwd)/.gitconfig_cmm" "$HOME/.gitconfig"
-  else
-    link_to_home .gitconfig
-  fi
-
-  link_to_home .gitignore_global
+  link_to_home .gitconfig
+  link_to_home .gitignore_default
 fi
 
 # Link vim files
