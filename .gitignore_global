@@ -5,6 +5,8 @@
 # Other text editors
 .vscode
 .idea
+.nova
+.fleet
 
 # Emacs files
 \#*\#
@@ -56,3 +58,7 @@ Thumbs.db
 *.bak
 *.env
 *.tool-versions
+
+# Various Ruby Gems #
+########################
+.solargraph.yml
