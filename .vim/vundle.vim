@@ -31,7 +31,7 @@ Plugin 'tpope/vim-endwise'                " Endwise
 Plugin 'tpope/vim-rails'                  " Rails
 Plugin 'vim-ruby/vim-ruby'                " Ruby
 Plugin 'tpope/vim-commentary'             " Easy commenting
-Plugin 'kien/ctrlp.vim'                   " Quick file finding
+" Plugin 'kien/ctrlp.vim'                   " Quick file finding
 Plugin 'mileszs/ack.vim'                  " Silver searcher in Vim
 Plugin 'rizzatti/dash.vim'                " Launch Dash from Vim
 Plugin 'janko-m/vim-test'                 " Support for various testing frameworks
@@ -46,10 +46,11 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'bpolly/vim-ttr'
 Plugin 'godlygeek/tabular'
+Plugin 'prabirshrestha/vim-lsp'
 
 " Color schemes
 Plugin 'nanotech/jellybeans.vim'         " Darker theme
-Plugin 'KeitaNakamura/neodark.vim'
+" Plugin 'KeitaNakamura/neodark.vim'
 Plugin 'rakr/vim-one'
 
 " End Vundle

@@ -16,8 +16,7 @@ set guifont=Hasklig
 
 " UI Colors
 set termguicolors
-" colorscheme jellybeans
-colorscheme one
+colorscheme jellybeans
 
 " =======
 " MAPPINGS
@@ -38,9 +37,6 @@ map <Leader>m <C-w>w
 
 " Search the contents of files
 map <Leader>o :Rg<CR>
-
-" Search by file name with CtrlP plugin
-let g:ctrlp_map = ',p'
 
 " Copy into macOS keyboard
 vnoremap <Leader>y "*y
@@ -64,12 +60,12 @@ no <C-h> <C-w>h
 " Text Formatting
 " =======
 
-" 100 character line length
+" 120 character line length
 if exists('+colorcolumn')
-  set colorcolumn=100
+  set colorcolumn=120
 endif
 
-set textwidth=100
+set textwidth=120
 
 " Unix line endings
 set fileformat=unix
@@ -84,7 +80,7 @@ syntax on
 filetype plugin indent on
 
 " Fix Delay on Esc
-set timeoutlen=1000 ttimeoutlen=10
+" set timeoutlen=1000 ttimeoutlen=10
 
 " backspace should behave like backspace
 :set backspace=indent,eol,start
@@ -284,15 +280,19 @@ let g:rails_projections = {
 " Be passive on HTML and let me write my Angular, Meteor, etc
 let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
-""" CtrlP Search
-" https://github.com/kien/ctrlp.vim#basic-options
-
-" Ignore items from search
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-
-" Default search mode
-let g:ctrlp_working_path_mode = 'ra'
-
 """ Vim-Test
 " Use Dispatch (important!)
 let test#strategy = "dispatch"
+
+""" vim-lsp
+"
+packadd vim-lsp
+
+if executable('standardrb')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'standardrb',
+        \ 'cmd': ['standardrb', '--lsp'],
+        \ 'allowlist': ['ruby'],
+        \ })
+endif
+
