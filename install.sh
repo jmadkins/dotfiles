@@ -69,7 +69,7 @@ fi
 # Link Git files
 if type git &> /dev/null; then
   link_to_home .gitconfig
-  link_to_home .gitignore_default
+  link_to_home .gitignore_global
 fi
 
 # Link vim files
