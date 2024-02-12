@@ -8,10 +8,6 @@ ANTIGEN_CACHE=false
 source "$HOME/antigen.zsh"
 #source <(kubectl completion zsh)
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-source ~/.rvm/scripts/rvm
-
 #Load OMZsh
 antigen use oh-my-zsh
 
@@ -61,7 +57,7 @@ fi
 
 # Use vim as default editor
 export EDITOR="vim"
-export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -70,3 +66,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+# export PATH="/opt/homebrew/sbin:$PATH"
+
+# rbenv setup
+eval "$(rbenv init - zsh)"
+
