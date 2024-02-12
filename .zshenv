@@ -25,11 +25,8 @@ append_if_exists () {
 ## PATH changes
 
 # Add /usr/local/bin, where Homebrew tends to install things
-append_if_exists /usr/local/bin
-append_if_exists /usr/local/sbin
+# append_if_exists /usr/local/bin
+# append_if_exists /usr/local/sbin
 
 # Postgres.app to PATH for psql
 append_if_exists /Applications/Postgres.app/Contents/Versions/latest/bin
-
-# Add Heroku to path
-append_if_exists /usr/local/heroku/bin
