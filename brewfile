@@ -1,10 +1,6 @@
-# Before running brew bundle run brew tap Homebrew/bundle
-# https://github.com/Homebrew/homebrew-bundle
+# Install with: brew bundle --file=brewfile
+# https://docs.brew.sh/Brew-Bundle-and-Brewfile
 
-tap "caskroom/cask"
-tap "caskroom/fonts"
-tap "homebrew/bundle"
-tap "homebrew/core"
 brew "python"
 brew "ipython"
 brew "ansible"
@@ -15,7 +11,7 @@ brew "fzf"
 brew "wget"
 brew "rbenv"
 brew "packer"
-brew "vim", args:["with-override-system-vim"]
+brew "vim"
 brew "pipenv"
 brew "coreutils"
 brew "automake"
@@ -28,9 +24,9 @@ brew "libtool"
 brew "unixodbc"
 brew "ripgrep"
 brew "helix"
+brew "curl"
 brew "emacs"
 cask "font-hack"
 cask "iterm2"
 cask "xscreensaver"
-cask "curl"
 cask "ghostty"
