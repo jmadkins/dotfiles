@@ -4,3 +4,6 @@
 # Ignore things I add to spelling
 .vim/spell
 
+
+# Tracked on purpose (the global gitignore ignores CLAUDE.md)
+!claude/CLAUDE.md

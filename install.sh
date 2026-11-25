@@ -78,6 +78,13 @@ if type vim &> /dev/null; then
   link_to_home .vimrc
 fi
 
+# Link Claude Code personal instructions
+mkdir -p "$HOME/.claude"
+echo "Linking claude/CLAUDE.md to $HOME/.claude/CLAUDE.md"
+ln -sf "$(pwd)/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+echo "Linking claude/rails.md to $HOME/.claude/rails.md"
+ln -sf "$(pwd)/claude/rails.md" "$HOME/.claude/rails.md"
+
 # Install Vundle
 echo "Installing Vundle..."
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
