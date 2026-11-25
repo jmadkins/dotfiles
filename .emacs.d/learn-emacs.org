@@ -1,0 +1,250 @@
+#+title: Learning Emacs, from the engine up
+
+Open this file *inside Emacs* and work through it there. Every Lisp snippet
+below is live: put the cursor just after its closing paren and press =C-x C-e=.
+The result shows up at the bottom of the screen (the echo area).
+
+* 0. Reading key notation
+
+| Notation | Means                                   |
+|----------+-----------------------------------------|
+| =C-x=    | hold Control, press x                   |
+| =M-x=    | hold Option (Meta), press x             |
+| =C-x C-f= | C-x, then C-f (a two-key sequence)     |
+| =C-c r m= | C-c, then r, then m                    |
+| =C-g=    | *quit*: cancels anything. Press it a lot. |
+
+Do =C-h t= (the built-in tutorial) once before anything else. It takes about 30
+minutes and builds the muscle memory for movement. This guide covers what the
+tutorial doesn't: how the thing actually works.
+
+* 1. The big idea: Emacs is a Lisp machine with an editor on top
+
+Zed is an editor written in Rust with some config. Emacs is the other way round:
+a small core in C (display, buffers, the Lisp interpreter) and *everything
+else* written in Emacs Lisp, which you can read, call and change while it runs.
+
+Every key you press runs a Lisp function. Find out which one:
+
+- =C-h k= then =C-f=: describes =forward-char=
+- =C-h k= then =C-x C-s=: describes =save-buffer=. Click the =files.el= link to
+  read its source. You're now reading the editor's own code.
+
+Call those same functions yourself:
+
+#+begin_src emacs-lisp
+(forward-char 3)
+(message "Hello from %s" (emacs-version))
+(+ 1 2 (* 3 4))
+#+end_src
+
+=M-:= evaluates any expression from anywhere. =M-x ielm= opens a Lisp REPL, like
+=rails c= for your editor.
+
+* 2. The help system is the manual. Use it constantly.
+
+| Key     | Answers                                                 |
+|---------+---------------------------------------------------------|
+| =C-h k= | what does this key do?                                  |
+| =C-h f= | what does this function do? (and its source code)       |
+| =C-h v= | what is this variable, and its current value?           |
+| =C-h x= | describe a command (an interactive function)            |
+| =C-h m= | every mode active here and all the keys they add        |
+| =C-h b= | every key binding available in this buffer              |
+| =C-h l= | the last 300 keys you pressed (great for "what did I do?") |
+| =C-h a= | search commands by name (apropos)                       |
+| =C-h i= | the full Info manuals, including the Emacs Lisp intro   |
+| =C-h C-q= | a quick reference card                                |
+
+*Exercise:* press =C-x= and wait. A popup lists everything that can follow
+it. That's =which-key=. Do the same with =C-c= in a Ruby file.
+
+* 3. Buffers, windows, frames
+
+The vocabulary differs from Zed's:
+
+| Emacs  | Zed equivalent                              |
+|--------+---------------------------------------------|
+| buffer | the contents of an open file (or anything else) |
+| window | a split pane showing one buffer             |
+| frame  | an OS window                                |
+
+A buffer doesn't need a file. =*scratch*=, =*Messages*=, magit, test output and
+the LSP server's events are all buffers, so the same keys work on all of them.
+
+#+begin_src emacs-lisp
+(buffer-name)              ; this buffer
+(buffer-file-name)         ; the file behind it
+(length (buffer-list))     ; how many buffers exist right now
+(window-width)
+(point)                    ; the cursor position, as a number
+#+end_src
+
+| Key       | Does                        |
+|-----------+-----------------------------|
+| =C-x b=   | switch buffer               |
+| =C-x k=   | kill (close) buffer         |
+| =C-x 2= / =C-x 3= | split below / right |
+| =M-o=     | jump to the other window    |
+| =C-x 0= / =C-x 1= | close this window / close all others |
+| =C-x 5 2= | new frame                   |
+
+Closing a window doesn't close the buffer. It's still there in =C-x b=.
+
+* 4. Point, mark, region, kill ring
+
+- *point* is the cursor. *mark* is a saved position. The text between them is
+  the *region* (the selection).
+- =C-SPC= sets the mark, so moving now selects. =C-x C-x= swaps point and mark.
+- =C-w= kills (cuts), =M-w= copies, =C-y= yanks (pastes).
+- *The kill ring:* everything you kill is kept. Press =C-y=, then =M-y=
+  repeatedly to cycle back through older kills.
+- =C-/= undo. =C-?= (Ctrl-Shift-/) redo.
+
+#+begin_src emacs-lisp
+(car kill-ring)            ; your most recent kill
+(length kill-ring)
+(mark)                     ; where the mark is
+#+end_src
+
+Movement, the core set: =C-f/b= char, =M-f/b= word, =C-n/p= line, =C-a/e=
+line start/end, =M-</M->= buffer start/end, =C-v/M-v= page, =C-l= recenter,
+=M-g g= goto line. =C-s= / =C-r= search forward/back (press again for next match,
+=RET= to stop there, =C-g= to go back where you started).
+
+* 5. Modes: how a buffer gets its behavior
+
+Every buffer has exactly one *major mode* (=ruby-ts-mode=, =web-mode=,
+=magit-status-mode=) plus any number of *minor modes* layered on top (=eglot=,
+=rspec-mode=, =projectile-rails-mode=, line numbers...).
+
+#+begin_src emacs-lisp
+major-mode                 ; the major mode here
+local-minor-modes          ; minor modes on in this buffer
+global-minor-modes         ; ones that are on everywhere
+#+end_src
+
+Open a model in =dot-com= and press =C-h m= to see the whole stack. A Rails file
+gets its powers from those minor modes, each adding its own keys.
+
+* 6. Variables, and why they can be buffer-local
+
+Settings are just Lisp variables. Some are *buffer-local*: each buffer can
+have its own value.
+
+#+begin_src emacs-lisp
+fill-column                     ; value in this buffer
+(default-value 'fill-column)    ; the global default
+(setq-local fill-column 72)     ; change it only here
+(local-variable-p 'fill-column) ; => t now
+#+end_src
+
+=C-h v fill-column= shows both values. That's how Ruby and ERB buffers can
+indent differently in the same session.
+
+* 7. Commands and key bindings are just functions and tables
+
+A *command* is a function with an =(interactive)= form, which lets =M-x= and
+keys call it. Write one now:
+
+#+begin_src emacs-lisp
+(defun my/rails-hello ()
+  "Say which project and file I'm in."
+  (interactive)
+  (message "Project: %s | File: %s"
+           (projectile-project-name)
+           (file-name-nondirectory (or (buffer-file-name) "none"))))
+#+end_src
+
+Evaluate it, then run =M-x my/rails-hello=. Bind it to a key:
+
+#+begin_src emacs-lisp
+(keymap-global-set "C-c h" #'my/rails-hello)
+#+end_src
+
+Now =C-c h= runs it, and =C-h k C-c h= shows your own docstring. A *keymap* is
+a table from keys to commands. Global, major-mode and minor-mode keymaps
+stack up, and the most specific one wins. That's the whole system.
+
+* 8. Hooks: "when X happens, also do Y"
+
+A hook is a list of functions Emacs runs at a certain moment. Your config
+already uses them: =eglot-ensure= runs on =ruby-ts-mode-hook=, and formatting
+runs on =before-save-hook=.
+
+#+begin_src emacs-lisp
+ruby-ts-mode-hook               ; what runs when a Ruby file opens
+before-save-hook                ; what runs before every save
+
+(defun my/announce-save () (message "Saved %s!" (buffer-name)))
+(add-hook 'after-save-hook #'my/announce-save)
+;; save any file with C-x C-s and watch the echo area, then undo it:
+(remove-hook 'after-save-hook #'my/announce-save)
+#+end_src
+
+* 9. Advice: changing existing functions without editing them
+
+You can wrap *any* function, including built-in ones:
+
+#+begin_src emacs-lisp
+(defun my/loud-other-window (&rest _) (message "switched windows"))
+(advice-add 'other-window :after #'my/loud-other-window)
+;; press M-o with two windows open, then remove it:
+(advice-remove 'other-window #'my/loud-other-window)
+#+end_src
+
+Together, sections 7 to 9 explain how every package works: it defines commands,
+adds them to keymaps, hangs functions on hooks, and sometimes advises
+existing code. Nothing more.
+
+* 10. The command loop
+
+Under it all, Emacs runs a loop: read a key, look it up in the keymaps, run
+the command, redisplay, repeat. You can watch it:
+
+#+begin_src emacs-lisp
+(defun my/spy () (message "ran: %s" this-command))
+(add-hook 'post-command-hook #'my/spy)
+;; move around for a few seconds, then stop it:
+(remove-hook 'post-command-hook #'my/spy)
+#+end_src
+
+* 11. Your config is just this, in a file
+
+Open =~/.emacs.d/init.el= (=C-x C-f ~/.emacs.d/init.el=). It's sections 6 to 8
+written down: =setq= for variables, =keymap-global-set= for keys, =add-hook=
+for hooks. =use-package= is a macro that installs a package and groups its
+config. Put the cursor in any form and press =C-M-x= to re-run just that form;
+no restart needed.
+
+* 12. Daily Rails workflow, mapped from Zed
+
+| Zed                     | Emacs                                   |
+|-------------------------+-----------------------------------------|
+| Cmd-P file finder       | =C-c p f= (or =s-p= in the GUI)         |
+| Cmd-Shift-F search      | =M-s r= (ripgrep with live preview)     |
+| Cmd-Shift-P palette     | =M-x= (fuzzy; type words in any order)  |
+| Cmd-Shift-O symbols     | =M-g i= (imenu)                         |
+| go to definition        | =M-.= (back with =M-,=)                 |
+| find references         | =M-?=                                   |
+| code actions / rename   | =C-c l a= / =C-c l r=                   |
+| hover docs              | shown in echo area; =C-c l d= for full  |
+| git panel               | =C-x g= (magit; press =?= inside it)    |
+| model / controller / view | =C-c r m= / =C-c r c= / =C-c r v=     |
+| spec <-> implementation | =C-c , t=                               |
+| run spec file / at cursor | =C-c , v= / =C-c , s=                 |
+| rails console           | =C-c r r=                               |
+| switch project          | =C-c p p=                               |
+| terminal                | =M-x eshell= (or =M-x term=)            |
+
+Start in a project: =C-x C-f ~/Developer/kin/dot-com/app/models/= then
+pick a file. Projectile, Rails mode and ruby-lsp all switch on by themselves.
+
+* 13. What to learn next, in order
+
+1. =C-h t=, the tutorial. Really.
+2. Use only Emacs keys for a week, and when you're stuck, =C-h k= / =C-h m=.
+3. Magit: =C-x g=, then =?=. It's widely considered the best git interface anywhere.
+4. Keyboard macros: =F3=, do something, =F4=; then =F4= replays it.
+5. =C-h i=, then "An Introduction to Programming in Emacs Lisp". Read a chapter a week.
+6. =M-x dired= (a file manager in a buffer, editable with =C-x C-q=).

@@ -85,6 +85,14 @@ ln -sf "$(pwd)/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 echo "Linking claude/rails.md to $HOME/.claude/rails.md"
 ln -sf "$(pwd)/claude/rails.md" "$HOME/.claude/rails.md"
 
+# Link Emacs files (individually, so packages and history stay out of the repo)
+if type emacs &> /dev/null; then
+  mkdir -p "$HOME/.emacs.d"
+  link_to_home .emacs.d/early-init.el
+  link_to_home .emacs.d/init.el
+  link_to_home .emacs.d/learn-emacs.org
+fi
+
 # Install Vundle
 echo "Installing Vundle..."
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
