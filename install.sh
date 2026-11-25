@@ -1,4 +1,4 @@
-#1 /bin/bash
+#!/bin/bash
 
 pwd=$(pwd)
 
@@ -56,13 +56,22 @@ fi
 
 # Homebrew on Mac
 if [[ $( uname ) == 'Darwin' ]]; then
-  echo "Installing Homebrew..."
-  if [[ ! -e /usr/local/bin/brew ]]; then
-	  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  # Apple Silicon installs to /opt/homebrew, Intel to /usr/local
+  if ! type brew &> /dev/null; then
+    for prefix in /opt/homebrew /usr/local; do
+      [[ -x "$prefix/bin/brew" ]] && eval "$("$prefix/bin/brew" shellenv)" && break
+    done
   fi
 
-  /usr/local/bin/brew tap Homebrew/bundle
-  /usr/local/bin/brew bundle --file=$pwd/brewfile
+  if ! type brew &> /dev/null; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    for prefix in /opt/homebrew /usr/local; do
+      [[ -x "$prefix/bin/brew" ]] && eval "$("$prefix/bin/brew" shellenv)" && break
+    done
+  fi
+
+  brew bundle --file="$pwd/brewfile"
   link_to_home brewfile
 fi
 
@@ -84,6 +93,22 @@ echo "Linking claude/CLAUDE.md to $HOME/.claude/CLAUDE.md"
 ln -sf "$(pwd)/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 echo "Linking claude/rails.md to $HOME/.claude/rails.md"
 ln -sf "$(pwd)/claude/rails.md" "$HOME/.claude/rails.md"
+
+# Link Emacs files (individually, so packages and history stay out of the repo)
+if type emacs &> /dev/null; then
+  mkdir -p "$HOME/.emacs.d"
+  link_to_home .emacs.d/early-init.el
+  link_to_home .emacs.d/init.el
+  link_to_home .emacs.d/learn-emacs.org
+
+  echo "Installing Emacs packages and tree-sitter grammars..."
+  emacs --batch \
+    -l "$HOME/.emacs.d/early-init.el" -l "$HOME/.emacs.d/init.el" \
+    --eval "(let ((treesit-auto-langs '(ruby yaml json javascript typescript tsx css html bash))) (cl-letf (((symbol-function 'y-or-n-p) (lambda (&rest _) t))) (treesit-auto-install-all)))" \
+    > /dev/null 2>&1 \
+    && echo "Emacs is ready." \
+    || echo "Emacs bootstrap failed; packages will install on first launch."
+fi
 
 # Install Vundle
 echo "Installing Vundle..."

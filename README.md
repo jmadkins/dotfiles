@@ -20,6 +20,13 @@ For my shell I use [Oh My ZSH!](https://ohmyz.sh/) [Antigen](https://github.com/
 
 Plugins are managed with [Vundle](https://github.com/VundleVim/Vundle.vim) and stored in `.vim/vundle.vim`.
 
+## Emacs
+
+Config lives in `.emacs.d/`: `early-init.el`, `init.el` (Ruby on Rails setup with
+ruby-lsp via eglot, projectile-rails, rspec-mode, magit, vertico/consult/corfu) and
+`learn-emacs.org`, a hands-on guide to how Emacs works. `install.sh` symlinks each
+file into `~/.emacs.d`; packages install themselves from MELPA on first launch.
+
 ## Credit
 
 A large portion of the code here was borrowed from [some](https://github.com/J3RN/dotfiles) [of](https://github.com/bseb/dotfiles) my coworkers. Their setups inspired me to make the jump to vim so it was only fitting.
