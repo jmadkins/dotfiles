@@ -1,12 +1,9 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 #!/bin/bash
 #
 ##Load Antigen
 ANTIGEN_CACHE=false
 
 source "$HOME/antigen.zsh"
-#source <(kubectl completion zsh)
 
 #Load OMZsh
 antigen use oh-my-zsh
@@ -48,6 +45,7 @@ antigen apply
 # Spaceship theme
 antigen theme denysdovhan/spaceship-prompt
 SPACESHIP_KUBECONTEXT_SHOW=false
+SPACESHIP_DOCKER_COMPOSE_SHOW=false
 
 ## Inclusions
 # Source aliases, if they exist
@@ -64,11 +62,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
 # export PATH="/opt/homebrew/sbin:$PATH"
 
 # rbenv setup
 eval "$(rbenv init - zsh)"
+export PATH="$HOME/.local/bin:$PATH"
 
+# GitHub MCP server (Claude Code github plugin) — reuse the gh CLI's token
+if type gh &> /dev/null; then
+  export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token 2> /dev/null)"
+fi

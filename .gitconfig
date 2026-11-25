@@ -2,7 +2,7 @@
 	excludesfile = ~/.gitignore_global
 [user]
 	name = Justin Adkins
-	email = justin.adkins@mythcoders.com
+	email = justin@mythcoders.com
 [push]
 	default = simple
 [filter "lfs"]
@@ -30,3 +30,5 @@
 	gpgsign = false
 [init]
 	defaultBranch = main
+[tag]
+	sort = -authordate
