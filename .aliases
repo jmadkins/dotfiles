@@ -77,7 +77,6 @@ fi
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
-alias dex='docker exec -e COLUMNS="$(tput cols)" -e LINES="$(tput lines)" -ti'
 
 # Git
 alias gc="git commit"
@@ -88,3 +87,7 @@ alias gs="git status -sb"
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r' # git diff with color
 
 alias edit='open -a "Visual Studio Code"'
+
+# Kin Insurance
+alias kinprod='~/Developer/kin/snippets/kinect/kinect --profile prodplatform'
+alias kindev='~/Developer/kin/snippets/kinect/kinect --profile dev'

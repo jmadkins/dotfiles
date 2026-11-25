@@ -54,7 +54,7 @@ if [ -f $HOME/.aliases ]; then
 fi
 
 # Use vim as default editor
-export EDITOR="vim"
+export EDITOR="zed"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 

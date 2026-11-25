@@ -14,7 +14,6 @@ clear_docker_logs() {
   truncate -s 0 $log
 }
 
-
 # PATH modification function
 append_if_exists () {
     if [ -e $argv ]; then

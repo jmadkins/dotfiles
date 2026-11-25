@@ -32,3 +32,5 @@
 	defaultBranch = main
 [tag]
 	sort = -authordate
+[credential]
+	helper = osxkeychain
