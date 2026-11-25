@@ -12,7 +12,7 @@ syntax enable
 " UI Options
 let g:airline_theme='one'
 set background=dark
-set guifont=Hasklig
+set guifont=Berkeley\ Mono
 
 " UI Colors
 set termguicolors
@@ -283,16 +283,4 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 """ Vim-Test
 " Use Dispatch (important!)
 let test#strategy = "dispatch"
-
-""" vim-lsp
-"
-packadd vim-lsp
-
-if executable('standardrb')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'standardrb',
-        \ 'cmd': ['standardrb', '--lsp'],
-        \ 'allowlist': ['ruby'],
-        \ })
-endif
 
