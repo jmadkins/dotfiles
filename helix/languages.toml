@@ -1,0 +1,10 @@
+[language-server.ruby-lsp]
+command = "ruby-lsp"
+config = { diagnostics = true, formatting = false }
+
+[[language]]
+name = "ruby"
+auto-format = true
+formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"] }
+language-servers = [ { name = "ruby-lsp", except-features = [ "format" ]}, "standardrb" ]
+

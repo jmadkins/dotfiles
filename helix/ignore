@@ -1,0 +1,19 @@
+# UNIGNORE in file picker and global search
+!.github/
+!.gitignore
+!.gitattributes
+
+# IGNORE in file picker and global search
+
+# font files
+*.eot
+*.ttf
+*.woff
+*.woff2
+
+# images
+*.svg
+*.gif
+*.png
+*.jpg
+*.webp

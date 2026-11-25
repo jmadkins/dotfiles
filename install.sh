@@ -85,11 +85,17 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 echo "Installing vim plugins..."
 vim +PluginInstall +qall
 
-if [[ -e rvm ]]; then
-  echo "Installing rvm..."
-  \curl -sSL https://get.rvm.io | bash -s stable --ruby
-
+if ! xcode-select -p &> /dev/null; then
   echo "Installing x-code tools..."
   xcode-select --install
 fi
 
+# Link Helix config
+if type hx &> /dev/null; then
+  mkdir -p "$HOME/.config"
+  if [ -d "$HOME/.config/helix" ] && [ ! -L "$HOME/.config/helix" ]; then
+    move_if_exists .config/helix
+  fi
+  echo "Linking helix to $HOME/.config/helix"
+  ln -sfn "$(pwd)/helix" "$HOME/.config/helix"
+fi
